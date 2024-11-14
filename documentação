@@ -1,0 +1,79 @@
+## API de Gerenciamento de Cinema
+
+### Autenticação
+* **Login:** POST /login
+  * **Corpo:**
+    * email: (string)
+    * password: (string)
+  * **Resposta:** Token de autenticação (JWT)
+* **Registro:** POST /register
+  * **Corpo:**
+    * name: (string)
+    * email: (string)
+    * password: (string)
+  * **Resposta:** Usuário criado
+
+### Filmes (Movies)
+* **Listar todos:** GET /movies
+* **Obter um:** GET /movies/{movie_id}
+* **Criar:** POST /movies (requer autenticação)
+* **Atualizar:** PUT /movies/{movie_id} (requer autenticação)
+* **Deletar:** DELETE /movies/{movie_id} (requer autenticação)
+
+### Sessões (Sessions)
+* **Listar todas:** GET /sessions
+* **Obter uma:** GET /sessions/{session_id}
+* **Criar:** POST /sessions (requer autenticação)
+* **Atualizar:** PUT /sessions/{session_id} (requer autenticação)
+* **Deletar:** DELETE /sessions/{session_id} (requer autenticação)
+
+### Salas (Rooms)
+* **Listar todas:** GET /rooms
+* **Obter uma:** GET /rooms/{room_id}
+* **Criar:** POST /rooms (requer autenticação)
+* **Atualizar:** PUT /rooms/{room_id} (requer autenticação)
+* **Deletar:** DELETE /rooms/{room_id} (requer autenticação)
+
+### Ingressos (Tickets)
+* **Listar todos:** GET /tickets
+* **Obter um:** GET /tickets/{ticket_id}
+* **Criar:** POST /tickets (requer autenticação)
+* **Atualizar:** PUT /tickets/{ticket_id} (requer autenticação)
+* **Deletar:** DELETE /tickets/{ticket_id} (requer autenticação)
+
+### **Detalhes Adicionais**
+* **Autenticação:** A maioria das rotas requer autenticação via token JWT. Inclua o token no cabeçalho da requisição.
+* **Campos:** Os campos específicos para cada entidade (filme, sessão, sala, ingresso) não foram detalhados aqui. Adicione os campos relevantes e seus tipos de dados.
+* **Códigos de status:** Documente os códigos de status HTTP esperados para cada operação (ex: 200 para sucesso, 404 para não encontrado, 401 para não autorizado).
+* **Validação:** Descreva as regras de validação para os dados de entrada.
+* **Erros:** Liste os possíveis erros e suas mensagens.
+
+### **Importando para o Insomnia**
+
+1. **Converter para OpenAPI:** Utilize ferramentas como o **markdown-to-openapi** ou **API Blueprint** para converter o Markdown em um arquivo OpenAPI (Swagger).
+2. **Importar no Insomnia:** No Insomnia, vá em **File** > **Import** e selecione o arquivo OpenAPI.
+3. **Explorar a API:** A documentação será exibida no Insomnia, permitindo que você faça requisições e teste a API de forma interativa.
+
+**Observações:**
+
+* **Personalização:** Adapte a documentação de acordo com as necessidades específicas da sua API, incluindo exemplos de requisições e respostas, esquemas de dados e outras informações relevantes.
+* **Ferramentas:** Explore outras ferramentas como o **Dredd** para testar a conformidade da sua API com a documentação.
+* **Formatação:** Utilize o Markdown para formatar o texto de forma clara e organizada, facilitando a leitura e compreensão.
+
+**Exemplo de um endpoint com mais detalhes:**
+
+
+### Obter um filme específico
+GET /movies/{movie_id}
+
+**Parâmetros:**
+* movie_id: (integer) ID do filme
+
+**Resposta:**
+```json
+{
+  "id": 1,
+  "title": "O Poderoso Chefão",
+  "director": "Francis Ford Coppola",
+  "release_year": 1972
+}
